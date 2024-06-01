@@ -22,7 +22,9 @@ class AuthController extends Controller
      */
     public function store(Request $request)
     {
-        return response($request->id);
+        // $this->validate($request, []);
+        $user = User::create($request->all());
+        return $user;
     }
 
     /**
