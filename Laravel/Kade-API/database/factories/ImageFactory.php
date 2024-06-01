@@ -18,6 +18,7 @@ class ImageFactory extends Factory
     {
         return [
             'location'=>fake()->filePath(),
+            'product_id'=>\App\Models\Product::factory(),
         ];
     }
 }

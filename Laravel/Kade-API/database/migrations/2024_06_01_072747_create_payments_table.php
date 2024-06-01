@@ -17,6 +17,9 @@ return new class extends Migration
             $table->dateTime('date');
             $table->decimal('amount',10,2);
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+
         });
     }
 
