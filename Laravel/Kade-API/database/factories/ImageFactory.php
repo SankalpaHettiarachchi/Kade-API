@@ -17,7 +17,7 @@ class ImageFactory extends Factory
     public function definition(): array
     {
         return [
-            'product_id'=>\App\Models\User::factory(),
+            'location'=>fake()->filePath(),
         ];
     }
 }

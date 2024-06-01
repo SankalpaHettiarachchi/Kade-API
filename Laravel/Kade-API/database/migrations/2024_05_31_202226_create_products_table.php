@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('user_id');
-            $table->bigInteger('image_id');
+            $table->unsignedBigInteger('user_id');
+            $table->integer('image_id');
             $table->string('name');
             $table->text('description');
             $table->decimal('quantity',8,2);

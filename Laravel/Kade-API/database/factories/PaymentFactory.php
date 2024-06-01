@@ -17,8 +17,8 @@ class PaymentFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id'=> fake()->numberBetween(0,1000),
-            'amount'=> fake()->numberBetween(100,1000),
+            'user_id'=> \App\Models\User::factory(),
+            'amount'=> \App\Models\Product::factory(),
             'date'=> fake()->dateTime(),
         ];
     }

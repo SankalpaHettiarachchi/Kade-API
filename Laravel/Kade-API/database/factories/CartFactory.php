@@ -19,7 +19,7 @@ class CartFactory extends Factory
         return [
             'user_id'=> \App\Models\User::factory(),
             'product_id'=> \App\Models\Product::factory(),
-            'amount'=> fake()->numberBetween(100,1000),
+            'amount'=> \App\Models\Product::factory(),
         ];
     }
 }
