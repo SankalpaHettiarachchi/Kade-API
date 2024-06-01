@@ -6,7 +6,6 @@ use App\Models\Cart;
 use App\Models\Payment;
 use App\Models\Product;
 use App\Models\User;
-use App\Models\Image;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -21,7 +20,6 @@ class DatabaseSeeder extends Seeder
     {
         User::factory(1)->create();
         Product::factory(1)->create();
-        Image::factory(1)->create();
         Payment::factory(1)->create();
         Cart::factory(1)->create();
         Admin::factory(1)->create();

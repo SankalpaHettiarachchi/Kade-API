@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
@@ -17,8 +18,8 @@ class ProductFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id'=> \App\Models\User::factory(),
-            'image_id'=> \App\Models\Image::factory(),
+            'user_id'=> User::factory(),
+            'image_url'=> fake()->filePath(),
             'name'=> fake()->name(),
             'description'=> fake()->text(),
             'quantity'=> fake()->numberBetween(0,100),
