@@ -10,5 +10,6 @@ use Illuminate\Support\Facades\Route;
 //     // return ['token' => $token->plainTextToken];
 // })->middleware('auth:sanctum');
 
-Route::apiResource('/login',AuthController::class);
+Route::post('/user/regster',[AuthController::class,'register']);
+Route::post('/user/login',[AuthController::class,'login']);
 

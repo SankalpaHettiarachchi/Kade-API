@@ -3,59 +3,45 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
+use Exception;
+use Illuminate\Support\Facades\Hash;
 use App\Models\User;
-use Illuminate\Http\Request;
+use App\Http\Requests\RegisterRequest;
+use Auth;
 
 class AuthController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function register(RegisterRequest $request)
     {
-        $user = User::all();
-        return $user;
+        $request->Validated($request->all());
+        try {
+            // Create the new user
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'address'=> $request->address,
+                'password' => Hash::make($request->password),
+            ]);
+            // Generate a token for the newly created user
+            $token = $user->createToken($user->id);
+            return response()->json(['token' => $token->plainTextToken],201);
+
+        }catch (Exception $e) {
+            return response()->json(['error' => 'Email already exists !'],403);
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function login(LoginRequest $request)
     {
-        // $this->validate($request, []);
-        $user = User::create($request->all());
-        return $user;
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(User $user)
-    {
-        return response()->json([
-            "message"=> 'For get user details',
-        ]);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, User $user)
-    {
-        return response()->json([
-            "message"=> 'For update user',
-        ]);
-
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(User $user)
-    {
-        return response()->json([
-            "message"=> 'For delete the user',
-        ]);
-
+        $request->Validated($request->all());
+        
+        if(!Auth::attempt($request->only(['email','password']))) {
+            return response()->json(['message' => 'Unauthorized'],401);
+        }
+        $user = User::where('email', $request->email)->first();
+        $tokenResult = $user->createToken('Personal Access Token');
+        $token = $tokenResult->plainTextToken;
+        return response()->json(['accessToken' =>$token,'token_type' => 'Bearer',]);
     }
 }
