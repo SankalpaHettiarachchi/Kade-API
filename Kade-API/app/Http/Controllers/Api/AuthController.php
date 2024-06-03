@@ -4,11 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Exception;
 use Illuminate\Support\Facades\Hash;
 use App\Models\User;
 use App\Http\Requests\RegisterRequest;
-use Auth;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AuthController extends Controller
 {
@@ -16,14 +19,12 @@ class AuthController extends Controller
     {
         $request->Validated($request->all());
         try {
-            // Create the new user
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
                 'address'=> $request->address,
                 'password' => Hash::make($request->password),
             ]);
-            // Generate a token for the newly created user
             $token = $user->createToken($user->id);
             return response()->json(['token' => $token->plainTextToken],201);
 
@@ -35,7 +36,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $request->Validated($request->all());
-        
+
         if(!Auth::attempt($request->only(['email','password']))) {
             return response()->json(['message' => 'Unauthorized'],401);
         }
@@ -43,5 +44,36 @@ class AuthController extends Controller
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->plainTextToken;
         return response()->json(['accessToken' =>$token,'token_type' => 'Bearer',]);
+    }
+
+    public function update(UserUpdateRequest $request)
+    {
+        $request->Validated($request->all());
+
+        $id = Auth::user()->id;
+        $affected = DB::table('users')
+        ->where('id', $id)
+        ->update([
+            'name' => $request->name,
+            'email' => $request->email,
+            'address'=> $request->address,
+            'password' => Hash::make($request->password),
+        ]);
+        return response()->json(['message' =>'user_updated']);
+    }
+
+    public function logout(Request $request){
+        Auth::user()->currentAccessToken()->delete();
+        return response()->json(['accessToken' =>'User loggedout']);
+    }
+
+    public function delete(Request $request){
+        $id = Auth::user()->id;
+        $user = User::find($id);
+        $user->delete();
+
+        if ($user->delete()) {
+            return response()->json(['accessToken' =>'This account deleted ']);
+        }
     }
 }

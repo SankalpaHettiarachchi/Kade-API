@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\Route;
 //     // $token = $request->user()->createToken($request->token_name);
 //     // return ['token' => $token->plainTextToken];
 // })->middleware('auth:sanctum');
+// Route::post('/user/ResetPassword',[AuthController::class,'reset_password']);
 
 Route::post('/user/regster',[AuthController::class,'register']);
 Route::post('/user/login',[AuthController::class,'login']);
 
+Route::group(['middleware'=> ['auth:sanctum']], function () {
+    Route::post('/user/logout',[AuthController::class,'logout']);
+    Route::post('/user/delete',[AuthController::class,'delete']);
+    Route::post('/user/update',[AuthController::class,'update']);
+});
