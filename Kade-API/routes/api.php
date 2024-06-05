@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 // Route::post('/user/ResetPassword',[AuthController::class,'reset_password']);
 
-Route::post('/user/regster',[AuthController::class,'register']);
+Route::post('/user/register',[AuthController::class,'register']);
 Route::post('/user/login',[AuthController::class,'login']);
 
 Route::group(['middleware'=> ['auth:sanctum']], function () {

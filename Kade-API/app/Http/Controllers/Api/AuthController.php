@@ -26,7 +26,7 @@ class AuthController extends Controller
                 'password' => Hash::make($request->password),
             ]);
             $token = $user->createToken($user->id);
-            return response()->json(['token' => $token->plainTextToken],201);
+            return response()->json(['user' => $user], 201);
 
         }catch (Exception $e) {
             return response()->json(['error' => 'Email already exists !'],403);
