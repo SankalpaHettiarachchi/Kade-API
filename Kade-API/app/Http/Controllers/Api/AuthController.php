@@ -46,9 +46,8 @@ class AuthController extends Controller
             return response()->json(['message' => 'Unauthorized'],401);
         }
         $user = User::where('email', $request->email)->first();
-        $tokenResult = $user->createToken('Personal Access Token');
-        $token = $tokenResult->plainTextToken;
-        return response()->json(['accessToken' =>$token,'token_type' => 'Bearer',]);
+        $token = $user->createToken('Personal Access Token')->plainTextToken;
+        return response()->json(['token'=>$token,200]);
     }
 
     public function update(UserUpdateRequest $request)
@@ -69,7 +68,7 @@ class AuthController extends Controller
 
     public function logout(Request $request){
         Auth::user()->currentAccessToken()->delete();
-        return response()->json(['accessToken' =>'User loggedout']);
+        return response()->json(['message' => 'Logged out successfully']);
     }
 
     public function delete(Request $request){
