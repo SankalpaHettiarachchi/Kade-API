@@ -10,6 +10,7 @@ it('allows a user to register', function () {
         'password' => 'Sa489684354',
         'password_confirmation' => 'Sa489684354',
     ]);
+    $responseData = $response->json();
 
     $response->assertStatus(201);
 
