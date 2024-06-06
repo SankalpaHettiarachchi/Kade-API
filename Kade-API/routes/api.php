@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -18,4 +19,6 @@ Route::group(['middleware'=> ['auth:sanctum']], function () {
     Route::post('/user/logout',[AuthController::class,'logout']);
     Route::post('/user/delete',[AuthController::class,'delete']);
     Route::post('/user/update',[AuthController::class,'update']);
+
+    Route::apiResource('/product',ProductController::class);
 });
