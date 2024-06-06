@@ -18,57 +18,62 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $request->Validated($request->all());
-        try {
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'address'=> $request->address,
-                'password' => Hash::make($request->password),
-            ]);
-            $token = $user->createToken($user->id);
-            return response()->json([
-                'token'=> $token,
-                'name'=> $user->name,
-                'email'=> $user->email,
-                'address'=> $user->address,
-            ], 201);
-
-        }catch (Exception $e) {
-            return response()->json(['error' => 'Email already exists !'],403);
-        }
-    }
-
-    public function login(LoginRequest $request)
-    {
-        $request->Validated($request->all());
-
-        if(!Auth::attempt($request->only(['email','password']))) {
-            return response()->json(['message' => 'Unauthorized'],401);
-        }
-        $user = User::where('email', $request->email)->first();
-        $token = $user->createToken('Personal Access Token')->plainTextToken;
-        return response()->json(['token'=>$token,200]);
-    }
-
-    public function update(UserUpdateRequest $request)
-    {
-        $request->Validated($request->all());
-
-        $id = Auth::user()->id;
-        $affected = DB::table('users')
-        ->where('id', $id)
-        ->update([
+        $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'address'=> $request->address,
             'password' => Hash::make($request->password),
         ]);
-        return response()->json(['message' =>'user_updated']);
+        $token = $user->createToken($user->id);
+        return response()->json([
+            'token'=> $token,
+            'name'=> $user->name,
+            'email'=> $user->email,
+            'address'=> $user->address,
+        ], 201);
+    }
+    
+    public function login(LoginRequest $request)
+    {
+        $request->Validated($request->all());
+        if(!Auth::attempt($request->only(['email','password']))) {
+            return response()->json(['message' => 'Unauthorized'],401);
+        }
+        $user = User::where('email', $request->email)->first();
+        $token = $user->createToken('Personal Access Token')->plainTextToken;
+        return response()->json([
+            'message'=> 'User found',
+            'token'=>$token,
+            'user'=> $user,
+        ],200);
+    }
+
+    public function update(UserUpdateRequest $request)
+    {
+        $request->Validated($request->all());
+        $id = Auth::user()->id;
+        $user = DB::table('users')
+                ->where('id', $id)
+                ->update([
+                    'name' => $request->name,
+                    'email' => $request->email,
+                    'address'=> $request->address,
+                    'password' => Hash::make($request->password),
+                ]);
+        $user = User::where('email', $request->email)->first();
+        $token = $user->createToken('Personal Access Token')->plainTextToken;
+        return response()->json([
+            'message' => 'User update successfully',
+            'token' => $token,
+            'user' => $user,
+        ],200);
     }
 
     public function logout(Request $request){
         Auth::user()->currentAccessToken()->delete();
-        return response()->json(['message' => 'Logged out successfully']);
+        return response()->json([
+            'message' => 'Logged out successfully'
+        ],204);
     }
 
     public function delete(Request $request){
@@ -77,7 +82,9 @@ class AuthController extends Controller
         $user->delete();
 
         if ($user->delete()) {
-            return response()->json(['accessToken' =>'This account deleted ']);
+            return response()->json([
+                'accessToken' =>'This account deleted !'
+            ],204);
         }
     }
 }
