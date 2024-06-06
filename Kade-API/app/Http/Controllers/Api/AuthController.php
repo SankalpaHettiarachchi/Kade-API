@@ -32,7 +32,7 @@ class AuthController extends Controller
             'address'=> $user->address,
         ], 201);
     }
-    
+
     public function login(LoginRequest $request)
     {
         $request->Validated($request->all());
