@@ -17,7 +17,7 @@ return new class extends Migration
             $table->text('address');
             $table->string('email')->unique();
             $table->boolean('access')->default(1);
-            $table->boolean('seller')->default(0);
+            $table->boolean('seller')->default(1);
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();

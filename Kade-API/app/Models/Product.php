@@ -13,6 +13,7 @@ class Product extends Model
         'image_url',
         'name',
         'description',
+        'av_quantity',
         'quantity',
         'unit',
         'unit_price',

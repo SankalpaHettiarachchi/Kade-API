@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProductCreateRequest;
+use App\Http\Requests\ProductUpdateRequest;
 use App\Http\Resources\ProductCollection;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -34,15 +35,29 @@ class ProductController extends Controller
     }
 
 
-    public function show(Product $product)
+    public function show(Request $request, Product $product)
     {
         //
+
     }
 
 
     public function update(Request $request, Product $product)
     {
-        //
+        // $request->Validated($request->all());
+        $product->update($request->only([
+            'image_url','name','description','av_quantity','unit','unit_price'
+        ]));
+
+        // DB::table('products')->insert([
+        //     'id' => $request->id,
+        //     'image_url' => $request->image_url,
+        //     'name' => $request->name,
+        //     'description' => $request->description,
+        //     'av_quantity' => $request->quantity,
+        //     'unit' => $request->unit,
+        //     'unit_price' => $request->unit_price,
+        // ]);
     }
 
 
