@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,4 +22,5 @@ Route::group(['middleware'=> ['auth:sanctum']], function () {
     Route::post('/user/update',[AuthController::class,'update']);
 
     Route::apiResource('/product',ProductController::class);
+    Route::apiResource('/cart',CartController::class);
 });

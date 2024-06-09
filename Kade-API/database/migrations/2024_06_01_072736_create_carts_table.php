@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('product_id');
-            $table->decimal('amount',10,2);
+            $table->decimal('quantity',10,2);
+            $table->decimal('sub_total',10,2);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

@@ -19,7 +19,8 @@ class CartFactory extends Factory
         return [
             'user_id'=> \App\Models\User::factory(),
             'product_id'=> \App\Models\Product::factory(),
-            'amount'=> \App\Models\Product::factory(),
+            'quantity'=>\App\Models\Product::factory(),
+            'sub_total'=> \App\Models\Product::factory(),
         ];
     }
 }
