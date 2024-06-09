@@ -7,9 +7,9 @@ use App\Http\Requests\ProductCreateRequest;
 use App\Http\Requests\ProductUpdateRequest;
 use App\Http\Resources\ProductCollection;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 
 class ProductController extends Controller
 {
@@ -38,18 +38,15 @@ class ProductController extends Controller
 
     }
 
-    public function show(Request $request, Product $product)
+    public function show(Product $product)
     {
-        //
+        return new ProductCollection(collect([$product]));
     }
 
     public function update(ProductUpdateRequest $request, Product $product)
     {
         $request->Validated($request->all());
-
-        if (Auth::id() !== $product['user_id']) {
-            return response()->json(['error' => 'Unauthorized action.'], 403);
-        }
+        Gate::authorize('update', $product);
         $product->update($request->only([
             'image_url','name','description','av_quantity','unit','unit_price'
         ]));
@@ -58,8 +55,10 @@ class ProductController extends Controller
         return new ProductCollection(collect([$product]));
     }
 
-    public function destroy(Product $request)
+    public function destroy(Product $product)
     {
-        //
+        Gate::authorize('delete', $product);
+        $product->delete();
+        return response()->json(['message' => 'Product Removed.'], 204);
     }
 }
