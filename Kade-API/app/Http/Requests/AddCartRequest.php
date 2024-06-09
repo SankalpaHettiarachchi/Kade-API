@@ -11,7 +11,7 @@ class AddCartRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()->user()->seller == 0;
+        return true;
     }
 
     /**

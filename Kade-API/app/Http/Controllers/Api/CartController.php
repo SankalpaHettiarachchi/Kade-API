@@ -8,9 +8,10 @@ use App\Http\Requests\CartUpdateRequest;
 use App\Http\Resources\CartCollection;
 use App\Models\Cart;
 use App\Models\Product;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
+
 
 class CartController extends Controller
 {
@@ -23,17 +24,6 @@ class CartController extends Controller
         return new CartCollection($userCart);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(AddCartRequest $request)
     {
         $request->Validated($request->all());
@@ -45,25 +35,21 @@ class CartController extends Controller
             'quantity' => $request->quantity,
             'sub_total' => $product->unit_price * $request->quantity,
         ]);
-        
+
         $newCartItem = Cart::findOrFail($CartItem);
         return new CartCollection(collect([$newCartItem]));
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(Cart $cart)
     {
+        Gate::authorize('view', $cart);
         return new CartCollection(collect([$cart]));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
     public function update(CartUpdateRequest $request, Cart $cart)
     {
         $request->Validated($request->all());
+        Gate::authorize('update', $cart);
         $product = Product::findOrFail($cart['product_id']);
 
         $cart->update([
@@ -74,12 +60,10 @@ class CartController extends Controller
         $cartItem = Cart::findOrFail($cart['id']);
         return new CartCollection(collect([$cartItem]));
     }
-
-    /**
-     * Remove the specified resource from storage.
-     */
+    
     public function destroy(Cart $cart)
     {
+        Gate::authorize('delete', $cart);
         $cart->delete();
         return response()->json(['message' => 'Product Removed.'], 204);
     }
