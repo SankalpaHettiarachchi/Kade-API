@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AddCartRequest extends FormRequest
+class CartUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return auth()->check() && auth()->user()->seller == 0;
+        return true;
     }
 
     /**
@@ -22,8 +22,7 @@ class AddCartRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "product_id"=> ['required','numeric'],
-            'quantity'=>['required','numeric'],
+            'quantity'=>['required','numeric']
         ];
     }
 }

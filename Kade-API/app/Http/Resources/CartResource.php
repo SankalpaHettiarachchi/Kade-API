@@ -18,7 +18,7 @@ class CartResource extends JsonResource
         return [
             "id"=> $this->id,
             "itemName"=> Product::findOrFail($this->product_id)->name,
-            "qty"=> $this->quantity,
+            "quantity"=> $this->quantity,
             "subTotal"=> $this->sub_total,
         ];
     }
