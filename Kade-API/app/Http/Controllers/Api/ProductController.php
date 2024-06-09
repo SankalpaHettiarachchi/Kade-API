@@ -46,6 +46,10 @@ class ProductController extends Controller
     public function update(ProductUpdateRequest $request, Product $product)
     {
         $request->Validated($request->all());
+
+        if (Auth::id() !== $product['user_id']) {
+            return response()->json(['error' => 'Unauthorized action.'], 403);
+        }
         $product->update($request->only([
             'image_url','name','description','av_quantity','unit','unit_price'
         ]));
