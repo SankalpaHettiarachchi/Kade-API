@@ -16,11 +16,24 @@
 
 ![Bootstrap](https://img.shields.io/badge/-MVC%20-05122A?style=flat-square&logo=MVC&color=353535) ![Bootstrap](https://img.shields.io/badge/-OOP-05122A?style=flat-square&logo=OOP&color=353535) ![Bootstrap](https://img.shields.io/badge/-PHP-05122A?style=flat-square&logo=PHP&color=353535) ![Bootstrap](https://img.shields.io/badge/-Laravel-05122A?style=flat-square&logo=Laravel&color=353535) ![Bootstrap](https://img.shields.io/badge/-Bootstrap-05122A?style=flat-square&logo=Bootstrap&color=353535) ![Bootstrap](https://img.shields.io/badge/-JavaScript-05122A?style=flat-square&logo=JavaScript&color=353535) ![Bootstrap](https://img.shields.io/badge/-HTML-05122A?style=flat-square&logo=HTML&color=353535) ![Bootstrap](https://img.shields.io/badge/-CSS-05122A?style=flat-square&logo=CSS&color=353535) ![Bootstrap](https://img.shields.io/badge/-Cpanel-05122A?style=flat-square&logo=Cpanel&color=353535) ![AWS](https://img.shields.io/badge/AWS-gray?style=flat) ![Bootstrap](https://img.shields.io/badge/-Google%20Cloud%20Console-05122A?style=flat-square&logo=Google-Cloud-Console&color=353535) ![Bootstrap](https://img.shields.io/badge/-MySQL-05122A?style=flat-square&logo=MySQL&color=353535) ![Bootstrap](https://img.shields.io/badge/-Visual%20Studio%20Code-05122A?style=flat-square&logo=Visual-Studio-Code&color=353535) ![Bootstrap](https://img.shields.io/badge/-Xampp-05122A?style=flat-square&logo=Xampp&color=353535) ![Bootstrap](https://img.shields.io/badge/-Postman-05122A?style=flat-square&logo=Postman&color=353535) ![Bootstrap](https://img.shields.io/badge/-Canva-05122A?style=flat-square&logo=Canva&color=353535)
 
-I have developed a web application for our Robotic Society at Rajarata University of Sri Lanka as an academic project. The main goal is to raise awareness of the society among students
+The AgriShop mobile application aims to facilitate direct sales between farmers and buyers in 
+the agricultural sector.
 
 ## Fetures
+• Key Functionalities: 
+o Farmers: Register, create profiles, list products, manage listings, communicate with 
+buyers, optionally manage orders. 
+o Buyers: Register, create profiles, browse listings, view product details, contact farmers, 
+optionally confirm orders. 
 
-- Students can register with their university email addresses.
-- Email notifications are sent for website updates.
-- An admin panel is available to control the site's content (CMS).
-- Super admin can manage access permissions."
+• System Architecture: 
+o Client-side mobile application (Android and/or iOS) for user interaction. 
+o Server-side infrastructure for data storage, user authentication, communication 
+facilitation, and (optional) payment processing. 
+o Secure database to store user information, product listings, communication history, and 
+other relevant data. 
+
+• Design Considerations: 
+o User-friendly interfaces for both farmers and buyers. 
+o Secure login and data encryption for user information and product details. 
+o Scalable architecture to accommodate future growth in user base and data volume.
