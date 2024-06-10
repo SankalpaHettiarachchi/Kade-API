@@ -21,9 +21,9 @@ the agricultural sector.
 
 ## Fetures
 • Key Functionalities: 
-o Farmers: Register, create profiles, list products, manage listings, communicate with 
+- Farmers: Register, create profiles, list products, manage listings, communicate with 
 buyers, optionally manage orders. 
-o Buyers: Register, create profiles, browse listings, view product details, contact farmers, 
+- Buyers: Register, create profiles, browse listings, view product details, contact farmers, 
 optionally confirm orders. 
 
 • System Architecture: 
