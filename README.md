@@ -2,6 +2,12 @@
 <p align="center">
   <a href="https://github.com/SankalpaHettiarachchi/">
     <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(1).jpg" height="300px">
+    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(2).jpg" height="300px">
+    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(3).jpg" height="300px">
+    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(4).jpg" height="300px">
+    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(5).jpg" height="300px">
+    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(6).jpg" height="300px">
+    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(7).jpg" height="300px">
   </a>
 </p>
 
