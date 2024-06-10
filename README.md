@@ -27,13 +27,13 @@ buyers, optionally manage orders.
 optionally confirm orders. 
 
 • System Architecture: 
-o Client-side mobile application (Android and/or iOS) for user interaction. 
-o Server-side infrastructure for data storage, user authentication, communication 
+- Client-side mobile application (Android and/or iOS) for user interaction. 
+- Server-side infrastructure for data storage, user authentication, communication 
 facilitation, and (optional) payment processing. 
-o Secure database to store user information, product listings, communication history, and 
+- Secure database to store user information, product listings, communication history, and 
 other relevant data. 
 
 • Design Considerations: 
-o User-friendly interfaces for both farmers and buyers. 
-o Secure login and data encryption for user information and product details. 
-o Scalable architecture to accommodate future growth in user base and data volume.
+- User-friendly interfaces for both farmers and buyers. 
+- Secure login and data encryption for user information and product details. 
+- Scalable architecture to accommodate future growth in user base and data volume.
