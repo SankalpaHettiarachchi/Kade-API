@@ -1,9 +1,9 @@
 # KADE - The Agri Shop
 <p align="center">
   <a href="https://github.com/SankalpaHettiarachchi/">
-    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(1).jpg" height="200px">
-    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(2).jpg" height="200px">
-    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(3).jpg" height="200px">
+    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(1).jpg" height="200px" width="300px">
+    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(2).jpg" height="200px" width="300px">>
+    <img src="https://github.com/SankalpaHettiarachchi/Third-Year/blob/main/Kade/(3).jpg" height="200px" width="300px">>
   </a>
 </p>
 
