@@ -16,7 +16,7 @@ class ProductCollection extends ResourceCollection
     {
         return [
             "data"=> $this->collection,
-            "Api_Version"=> "0.1.1",
+            "Api_Version"=> "v0.1.1",
             "Author"=> "SyntaxErrors",
         ];
     }
