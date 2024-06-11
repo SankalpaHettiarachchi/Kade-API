@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PaymentCollection;
 use App\Models\Payment;
+use Illuminate\Support\Facades\Gate;
+
 class PaymentController extends Controller
 {
     /**
@@ -20,6 +22,7 @@ class PaymentController extends Controller
      */
     public function show(Payment $payment)
     {
+        Gate::authorize('view', $payment);
         return new PaymentCollection(collect([$payment]));
     }
 }
