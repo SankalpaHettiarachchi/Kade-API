@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CartController;
+use App\Http\Controllers\Api\MakePaymentController;
 use App\Http\Controllers\Api\ProductController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,4 +27,5 @@ Route::group(['middleware'=> ['auth:sanctum']], function () {
 
     Route::apiResource('/product',ProductController::class);
     Route::apiResource('/cart',CartController::class);
+    Route::post('/payment',MakePaymentController::class);
 });
