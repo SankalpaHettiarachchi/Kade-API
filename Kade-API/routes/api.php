@@ -3,7 +3,6 @@
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CartController;
 use App\Http\Controllers\Api\ProductController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/user', function (Request $request) {
@@ -12,6 +11,10 @@ use Illuminate\Support\Facades\Route;
 //     // return ['token' => $token->plainTextToken];
 // })->middleware('auth:sanctum');
 // Route::post('/user/ResetPassword',[AuthController::class,'reset_password']);
+
+Route::get('/teat', function () {
+    return response()->json(['message'=>'Hellow Client, I`m API']);
+});
 
 Route::post('/user/register',[AuthController::class,'register']);
 Route::post('/user/login',[AuthController::class,'login']);
