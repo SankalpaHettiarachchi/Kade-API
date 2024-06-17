@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 // })->middleware('auth:sanctum');
 // Route::post('/user/ResetPassword',[AuthController::class,'reset_password']);
 
+// New Branch for hasan
+
 Route::get('/teat', function () {
     return response()->json(['message'=>'Hellow Client, I`m API']);
 });
@@ -29,6 +31,6 @@ Route::group(['middleware'=> ['auth:sanctum']], function () {
     Route::apiResource('/product',ProductController::class);
     Route::apiResource('/cart',CartController::class);
     Route::apiResource('/payment',PaymentController::class)->only(['index','show']);
-    
+
     Route::post('/make-payment',MakePaymentController::class);
 });
